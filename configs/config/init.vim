@@ -1,88 +1,91 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " init.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Plug
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 call plug#begin('~/.local/share/nvim/plugged')
 
-" deoplete & friends
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/neoinclude.vim'
-Plug 'zchee/deoplete-clang'
-Plug 'zchee/deoplete-jedi'
+" completion
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-clang'
+Plug 'ncm2/ncm2-jedi'
+Plug 'roxma/nvim-yarp'
 
-" syntax checking
-Plug 'neomake/neomake'
+" syntax checking and highlighting
+Plug 'w0rp/ale'                     " fuk
+Plug 'hashivim/vim-terraform'       " fuk
+Plug 'aklt/plantuml-syntax'         " Syntax highlighting for plantuml
+Plug 'numirias/semshi'              " Cool ass syntax highlighting for python
+Plug 'vim-pandoc/vim-pandoc'        " Pandoc coolness
+Plug 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax highlighting
 
-" fancy shiz
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'fidian/hexmode'
+" a e s t h e t i c s
+Plug 'vim-airline/vim-airline'         " Vim status bar enhancement
+Plug 'vim-airline/vim-airline-themes'  " Themes for the status bar
+Plug 'nathanaelkane/vim-indent-guides' " Visual marks for indentation
+Plug 'powerline/powerline'             " Powerline font integration
+Plug 'liuchengxu/space-vim-dark'       " Cool theme
+Plug 'junegunn/goyo.vim'               " Distraction free mode
+Plug 'junegunn/limelight.vim'          " Cool ass highlighting shit yo
+Plug 'junegunn/vim-easy-align'         " yeah
+
+" productivity
 Plug 'haya14busa/incsearch.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
-Plug 'artur-shaik/vim-javacomplete2'
 Plug 'airblade/vim-rooter'
-Plug 'powerline/powerline'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'gcmt/taboo.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Yggdroot/indentLine'
-Plug 'vim-scripts/maude.vim'
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
-" Files and syntax highlighting
-Plug 'liuchengxu/space-vim-dark'
-Plug 'hashivim/vim-terraform'
+" misc
+Plug 'fidian/hexmode'
 
 call plug#end()
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Autocompletion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set completeopt-=preview
-let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"============================================================================="
 
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/6.0.0/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/6.0.0/lib/clang'
-let g:deoplete#sources#clang#executable = '/usr/local/Cellar/llvm/6.0.0/bin/clang'
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-n>" : "\<S-Tab>"
+
+"============================================================================="
 " => Syntax checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd! BufWritePost,BufEnter * Neomake
-
+"============================================================================="
 let g:rooter_patterns = ['Main.java', 'Makefile', '.git/', 'build.xml']
 
-let g:neomake_logfile = '/tmp/neomake.log'
+let g:ale_lint_on_text_changed = 'never'
 
-let g:neomake_cpp_enabled_makers = ['clang']
-let g:neomake_cpp_clang_args = ['-std=c++11', '-Wall', '-Wextra', '-pedantic']
+let g:ale_linters = {'c': ['clang'], 'python': ['pylint', 'flake8']}
+let g:ale_python_pylint_auto_pipenv = 1
+let g:ale_python_flake8_auto_pipenv = 1
 
-let g:neomake_c_enabled_makers = ['clang']
-let g:neomake_c_clang_args = ['-std=c11', '-Wall', '-Wextra', '-pedantic']
+let g:ale_c_clang_options = '-std = c99 -Wall -Wextra -Wpedantic'
 
-let g:neomake_python_enabled_makers = ['pep8']
-
-autocmd! FileType java
-            \ setlocal omnifunc=javacomplete#Complete |
-            \ let g:neomake_java_javac_args = ['-cp', FindRootDirectory()]
+nmap <silent> <C-k> <Plug>(ale_previous_warp)
+nmap <silent> <C-j> <Plug>(ale_next_warp)
 
 augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Sets line-counting
 set number
+set relativenumber
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -97,10 +100,11 @@ map <leader>dw :%s/\s\+$//g<cr>
 nmap <leader>v :tabedit ~/.vimrc<cr>
 
 " vimtex
+let g:tex_flavor = "latex"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -145,23 +149,24 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" Concealing
+set conceallevel=2
+let concealcursor = ""
+let g:tex_conceal = "abdgm"
+highlight Conceal ctermbg=200
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Enable syntax highlighting
 syntax enable
-let g:load_doxygen_syntax=1
+let g:load_doxygen_syntax = 1
 
-colorscheme space-vim-dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-set guioptions-=T
-set guioptions+=e
-set t_Co=256
-set guitablabel=%M\ %t
-endif
+" Fancy theme
+let g:space_vim_dark_background = 234
+color space-vim-dark
+set termguicolors
+hi LineNr ctermbg=NONE guibg=NONE
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -174,18 +179,27 @@ set colorcolumn=80
 set spelllang=en
 set mouse=a
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Line highlighting
+set cursorline
+highlight CursorLine guibg=#303030 ctermbg=236
+
+" Indent highlighting
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+"============================================================================="
 " => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Use spaces instead of tabs
 set autoindent
 
@@ -207,9 +221,15 @@ set wrap "Wrap lines
 
 let g:incsearch#auto_nohlsearch = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"============================================================================="
 " => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -273,14 +293,15 @@ autocmd BufReadPost *
 set viminfo^=%
 
 
-""""""""""""""""""""""""""""""
+"============================================================================="
 " => Status line
-""""""""""""""""""""""""""""""
+"============================================================================="
 " Format the status line
 let g:airline_theme = 'minimalist'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
-let g:airline_extensions = ['branch', 'vimtex', 'neomake']
+let g:airline#extensions#ale#enabled = 1
+let g:airline_extensions = ['branch', 'vimtex']
 
 let g:airline_mode_map = {
             \ '__'  :   '-',
@@ -294,37 +315,28 @@ let g:airline_mode_map = {
             \ 'S'   :   'S',
             \ }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-    nmap <D-j> <M-j>
-    nmap <D-k> <M-k>
-    vmap <D-j> <M-j>
-    vmap <D-k> <M-k>
-endif
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save
 func! DeleteTrailingWS()
+    if (&ft =~ 'pandoc' || &ft =~ 'tex')
+        return
+    endif
+
     exe "normal mz"
     %s/\s\+$//ge
     exe "normal `z"
 endfunc
+
 autocmd BufWrite * :call DeleteTrailingWS()
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => vimgrep searching and cope displaying
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
 " When you search with vimgrep, display your results in cope by doing:
@@ -342,9 +354,9 @@ map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
@@ -355,9 +367,9 @@ map <leader>sa zg
 map <leader>s? z=
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -369,13 +381,13 @@ map <leader>pp :setlocal paste!<cr>
 
 " NERDTree
 map <leader>a :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.class$', '\.o$', '\.gch$']
+let NERDTreeIgnore = ['\.class$', '\.o$', '\.gch$', '\.png']
 let NERDTreeWinSize = 22
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 " => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"============================================================================="
 function! CmdLine(str) abort
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
