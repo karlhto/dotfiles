@@ -9,17 +9,21 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " completion
 Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-clang'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-pyclang'
 Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-racer'
 Plug 'roxma/nvim-yarp'
 
 " syntax checking and highlighting
-Plug 'w0rp/ale'                     " fuk
-Plug 'hashivim/vim-terraform'       " fuk
+Plug 'w0rp/ale'                     " Linting framework
+Plug 'hashivim/vim-terraform'       " Syntax for terraform files
 Plug 'aklt/plantuml-syntax'         " Syntax highlighting for plantuml
-Plug 'numirias/semshi'              " Cool ass syntax highlighting for python
+Plug 'numirias/semshi'              " Cool syntax highlighting for python
 Plug 'vim-pandoc/vim-pandoc'        " Pandoc coolness
 Plug 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax highlighting
+Plug 'neovimhaskell/haskell-vim'    " Haskell syntax and indentation
+Plug 'mboughaba/i3config.vim'       " Syntax for i3 configuration
 
 " a e s t h e t i c s
 Plug 'vim-airline/vim-airline'         " Vim status bar enhancement
@@ -40,12 +44,13 @@ Plug 'tpope/vim-git'
 Plug 'gcmt/taboo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+Plug 'embear/vim-localvimrc'
+Plug 'chase/vim-ansible-yaml'
 
 " misc
 Plug 'fidian/hexmode'
 
 call plug#end()
-
 
 "============================================================================="
 " => Autocompletion
@@ -53,6 +58,8 @@ call plug#end()
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
+
+let g:ncm2_pyclang#library_path = '/usr/lib64/libclang.so'
 
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
@@ -66,11 +73,20 @@ let g:rooter_patterns = ['Main.java', 'Makefile', '.git/', 'build.xml']
 
 let g:ale_lint_on_text_changed = 'never'
 
-let g:ale_linters = {'c': ['clang'], 'python': ['pylint', 'flake8']}
+let g:ale_linters = {'c':       ['gcc'],
+                    \'asm':     ['gcc'],
+                    \'python':  ['pylint', 'flake8'],
+                    \'haskell': ['stack-ghc-mod', 'hlint']}
+
+" python
 let g:ale_python_pylint_auto_pipenv = 1
 let g:ale_python_flake8_auto_pipenv = 1
 
-let g:ale_c_clang_options = '-std = c99 -Wall -Wextra -Wpedantic'
+" C
+let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=c11'
+
+" asm
+let g:ale_asm_gcc_options = '-Wall -Wextra -Wpedantic'
 
 nmap <silent> <C-k> <Plug>(ale_previous_warp)
 nmap <silent> <C-j> <Plug>(ale_next_warp)
@@ -79,6 +95,8 @@ augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
+
+let g:load_doxygen_syntax = 1
 
 "============================================================================="
 " => General
@@ -151,22 +169,24 @@ set tm=500
 
 " Concealing
 set conceallevel=2
-let concealcursor = ""
+" let concealcursor = ""
 let g:tex_conceal = "abdgm"
-highlight Conceal ctermbg=200
 
 "============================================================================="
 " => Colors and Fonts
 "============================================================================="
-" Enable syntax highlighting
-syntax enable
-let g:load_doxygen_syntax = 1
-
 " Fancy theme
 let g:space_vim_dark_background = 234
 color space-vim-dark
 set termguicolors
 hi LineNr ctermbg=NONE guibg=NONE
+hi Conceal ctermbg=NONE guibg=NONE
+
+" Line highlighting
+set cursorline
+highlight CursorLine guibg=#303030 ctermbg=236
+
+hi Normal ctermbg=NONE guibg=NONE
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -179,10 +199,6 @@ set colorcolumn=80
 set spelllang=en
 set mouse=a
 
-" Line highlighting
-set cursorline
-highlight CursorLine guibg=#303030 ctermbg=236
-
 " Indent highlighting
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
@@ -191,32 +207,14 @@ let g:indent_guides_guide_size = 1
 "============================================================================="
 " => Files, backups and undo
 "============================================================================="
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Turn backup off, since most stuff is in SVN, git etc. anyway
 set nobackup
 set nowb
 set noswapfile
 
-
 "============================================================================="
 " => Text, tab and indent related
 "============================================================================="
-" Use spaces instead of tabs
-set autoindent
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-set softtabstop=-1
-
-filetype plugin indent on
-
-set expandtab
-
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
-set ai "Auto indent
 set wrap "Wrap lines
 
 let g:incsearch#auto_nohlsearch = 1
@@ -384,6 +382,8 @@ map <leader>a :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.class$', '\.o$', '\.gch$', '\.png']
 let NERDTreeWinSize = 22
 
+" local vimrrc
+let g:localvimrc_ask = 0
 
 "============================================================================="
 " => Helper functions
