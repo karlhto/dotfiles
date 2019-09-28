@@ -83,18 +83,13 @@ let g:ale_python_pylint_auto_pipenv = 1
 let g:ale_python_flake8_auto_pipenv = 1
 
 " C
-let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=c11'
+let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=gnu11'
 
 " asm
 let g:ale_asm_gcc_options = '-Wall -Wextra -Wpedantic'
 
 nmap <silent> <C-k> <Plug>(ale_previous_warp)
 nmap <silent> <C-j> <Plug>(ale_next_warp)
-
-augroup project
-    autocmd!
-    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
-augroup END
 
 let g:load_doxygen_syntax = 1
 
@@ -115,7 +110,8 @@ nmap <leader>w :w!<cr>
 
 map <leader>dw :%s/\s\+$//g<cr>
 
-nmap <leader>v :tabedit ~/.vimrc<cr>
+nmap <leader>v :tabedit ~/.config/nvim/init.vim<cr>
+nmap <leader>ft :tabedit ~/.config/nvim/ftplugin<cr>
 
 " vimtex
 let g:tex_flavor = "latex"
@@ -185,8 +181,6 @@ hi Conceal ctermbg=NONE guibg=NONE
 " Line highlighting
 set cursorline
 highlight CursorLine guibg=#303030 ctermbg=236
-
-hi Normal ctermbg=NONE guibg=NONE
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -302,16 +296,26 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline_extensions = ['branch', 'vimtex']
 
 let g:airline_mode_map = {
-            \ '__'  :   '-',
-            \ 'n'   :   'N',
-            \ 'i'   :   'I',
-            \ 'R'   :   'R',
-            \ 'c'   :   'C',
-            \ 'v'   :   'V',
-            \ 'V'   :   'V',
-            \ 's'   :   'S',
-            \ 'S'   :   'S',
+            \ '__'     : '-',
+            \ 'c'      : 'C',
+            \ 'i'      : 'I',
+            \ 'ic'     : 'I',
+            \ 'ix'     : 'I',
+            \ 'n'      : 'N',
+            \ 'multi'  : 'M',
+            \ 'ni'     : 'N',
+            \ 'no'     : 'N',
+            \ 'R'      : 'R',
+            \ 'Rv'     : 'R',
+            \ 's'      : 'S',
+            \ 'S'      : 'S',
+            \ ''     : 'S',
+            \ 't'      : 'T',
+            \ 'v'      : 'V',
+            \ 'V'      : 'V',
+            \ ''     : 'V',
             \ }
+
 
 "============================================================================="
 " => Editing mappings
