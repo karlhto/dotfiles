@@ -22,6 +22,8 @@ if [ -x "$(command -v nvim)" ]; then
     # neovim
     mkdir -p $HOME/.config/nvim/
     cp -Rf config/nvim/* $HOME/.config/nvim/
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 if [ -f $HOME/.zpreztorc ]; then
