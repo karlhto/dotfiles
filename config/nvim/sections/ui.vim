@@ -77,3 +77,10 @@ let g:airline_mode_map = {
 			\ 'V'      : 'V',
 			\ ''     : 'V',
 			\ }
+
+
+" NERDTree
+" ========
+noremap <leader>a :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.class$', '\.o$', '\.gch$', '\.png']
+let NERDTreeWinSize = 22
