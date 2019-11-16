@@ -1,217 +1,19 @@
-"============================================================================="
-" init.vim
-"============================================================================="
+" krrl's neovim config
+" --------------------
 
-"============================================================================="
-" => Plug
-"============================================================================="
-call plug#begin('~/.local/share/nvim/plugged')
+" load all plugins
+runtime sections/plug.vim
 
-" completion
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-racer'
-Plug 'roxma/nvim-yarp'
+" general config
+runtime sections/general.vim
 
-" syntax checking and highlighting
-Plug 'w0rp/ale'                     " Linting framework
-Plug 'hashivim/vim-terraform'       " Syntax for terraform files
-Plug 'aklt/plantuml-syntax'         " Syntax highlighting for plantuml
-Plug 'numirias/semshi'              " Cool syntax highlighting for python
-Plug 'vim-pandoc/vim-pandoc'        " Pandoc coolness
-Plug 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax highlighting
-Plug 'neovimhaskell/haskell-vim'    " Haskell syntax and indentation
-Plug 'mboughaba/i3config.vim'       " Syntax for i3 configuration
+" user interface
+runtime sections/ui.vim
 
-" a e s t h e t i c s
-Plug 'vim-airline/vim-airline'         " Vim status bar enhancement
-Plug 'vim-airline/vim-airline-themes'  " Themes for the status bar
-Plug 'nathanaelkane/vim-indent-guides' " Visual marks for indentation
-Plug 'powerline/powerline'             " Powerline font integration
-Plug 'liuchengxu/space-vim-dark'       " Cool theme
-Plug 'junegunn/goyo.vim'               " Distraction free mode
-Plug 'junegunn/limelight.vim'          " Cool ass highlighting shit yo
-Plug 'junegunn/vim-easy-align'         " yeah
+" linting and autocompletion engines
+runtime sections/lint_and_auto.vim
 
-" productivity
-Plug 'haya14busa/incsearch.vim'
-Plug 'lervag/vimtex'
-Plug 'airblade/vim-rooter'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-git'
-Plug 'gcmt/taboo.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
-Plug 'embear/vim-localvimrc'
-Plug 'chase/vim-ansible-yaml'
-
-" misc
-Plug 'fidian/hexmode'
-
-call plug#end()
-
-"============================================================================="
-" => Autocompletion
-"============================================================================="
-
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-
-let g:ncm2_pyclang#library_path = '/usr/lib64/libclang.so'
-
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-n>" : "\<S-Tab>"
-
-"============================================================================="
-" => Syntax checking
-"============================================================================="
-let g:rooter_patterns = ['Main.java', 'Makefile', '.git/', 'build.xml']
-
-let g:ale_lint_on_text_changed = 'never'
-
-let g:ale_linters = {'c':       ['gcc'],
-                    \'asm':     ['gcc'],
-                    \'python':  ['pylint', 'flake8'],
-                    \'haskell': ['stack-ghc-mod', 'hlint']}
-
-" python
-let g:ale_python_pylint_auto_pipenv = 1
-let g:ale_python_flake8_auto_pipenv = 1
-
-" C
-let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=gnu11'
-
-" asm
-let g:ale_asm_gcc_options = '-Wall -Wextra -Wpedantic'
-
-nmap <silent> <C-k> <Plug>(ale_previous_warp)
-nmap <silent> <C-j> <Plug>(ale_next_warp)
-
-let g:load_doxygen_syntax = 1
-
-"============================================================================="
-" => General
-"============================================================================="
-" Sets line-counting
-set number
-set relativenumber
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-map <leader>dw :%s/\s\+$//g<cr>
-
-nmap <leader>v :tabedit ~/.config/nvim/init.vim<cr>
-nmap <leader>ft :tabedit ~/.config/nvim/ftplugin<cr>
-
-" vimtex
-let g:tex_flavor = "latex"
-
-"============================================================================="
-" => VIM user interface
-"============================================================================="
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
-" airline shows mode for you
-set noshowmode
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-
-" Always show current position
-set ruler
-
-" Height of the command bar
-set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Configure backspace so it acts as it should act
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-
-" Concealing
-set conceallevel=2
-" let concealcursor = ""
-let g:tex_conceal = "abdgm"
-
-"============================================================================="
-" => Colors and Fonts
-"============================================================================="
-" Fancy theme
-let g:space_vim_dark_background = 234
-color space-vim-dark
-set termguicolors
-hi LineNr ctermbg=NONE guibg=NONE
-hi Conceal ctermbg=NONE guibg=NONE
-
-" Line highlighting
-set cursorline
-highlight CursorLine guibg=#303030 ctermbg=236
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" Complain when column passes 80
-set colorcolumn=80
-set spelllang=en
-set mouse=a
-
-" Indent highlighting
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
-"============================================================================="
-" => Files, backups and undo
-"============================================================================="
-" Turn backup off, since most stuff is in SVN, git etc. anyway
-set nobackup
-set nowb
-set noswapfile
-
-"============================================================================="
-" => Text, tab and indent related
-"============================================================================="
-set wrap "Wrap lines
-
-let g:incsearch#auto_nohlsearch = 1
+let g:rooter_patterns = ['Makefile', '.git/', 'build.xml', 'cargo.toml']
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -226,48 +28,19 @@ nmap ga <Plug>(EasyAlign)
 map j gj
 map k gk
 
-" Mapping for incsearch (plugin)
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
-" Switch between buffers
-map <Tab> :bnext<cr>
-map <S-Tab> :bprevious<cr>
+" Switch between buffers in normal mode
+nnoremap <Tab> :bnext<cr>
+nnoremap <S-Tab> :bprevious<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
@@ -277,51 +50,26 @@ catch
 endtry
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+augroup BFP
+    autocmd!
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+augroup END
+
 " Remember info about open buffers on close
 set viminfo^=%
 
-
-"============================================================================="
-" => Status line
-"============================================================================="
-" Format the status line
-let g:airline_theme = 'minimalist'
-let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline_extensions = ['branch', 'vimtex']
-
-let g:airline_mode_map = {
-            \ '__'     : '-',
-            \ 'c'      : 'C',
-            \ 'i'      : 'I',
-            \ 'ic'     : 'I',
-            \ 'ix'     : 'I',
-            \ 'n'      : 'N',
-            \ 'multi'  : 'M',
-            \ 'ni'     : 'N',
-            \ 'no'     : 'N',
-            \ 'R'      : 'R',
-            \ 'Rv'     : 'R',
-            \ 's'      : 'S',
-            \ 'S'      : 'S',
-            \ ''     : 'S',
-            \ 't'      : 'T',
-            \ 'v'      : 'V',
-            \ 'V'      : 'V',
-            \ ''     : 'V',
-            \ }
-
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc " ?
 
 "============================================================================="
 " => Editing mappings
 "============================================================================="
 " Remap VIM 0 to first non-blank character
 map 0 ^
+noremap <silent> <leader><cr> :noh<cr>
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
@@ -334,7 +82,10 @@ func! DeleteTrailingWS()
     exe "normal `z"
 endfunc
 
-autocmd BufWrite * :call DeleteTrailingWS()
+augroup DTWS
+    autocmd!
+    autocmd BufWrite * :call DeleteTrailingWS()
+augroup END
 
 "============================================================================="
 " => vimgrep searching and cope displaying
@@ -350,54 +101,36 @@ autocmd BufWrite * :call DeleteTrailingWS()
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+noremap <leader>cc :botright cope<cr>
+noremap <leader>n :cn<cr>
+noremap <leader>p :cp<cr>
 
 
 "============================================================================="
 " => Spell checking
 "============================================================================="
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+noremap <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>s? z=
 
 
 "============================================================================="
 " => Misc
 "============================================================================="
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
 
 " NERDTree
-map <leader>a :NERDTreeToggle<CR>
+noremap <leader>a :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.class$', '\.o$', '\.gch$', '\.png']
 let NERDTreeWinSize = 22
-
-" local vimrrc
-let g:localvimrc_ask = 0
 
 "============================================================================="
 " => Helper functions
 "============================================================================="
-function! CmdLine(str) abort
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
