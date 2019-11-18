@@ -18,6 +18,9 @@ set showmatch      " Show matching brackets
 set cursorline     " Show cursor line
 set colorcolumn=80 " Highlighted column
 
+set splitbelow     " Split below on horizontal split
+set splitright     " Split to the right on vertical split
+
 let g:tex_conceal = "abdgm"
 
 
@@ -25,13 +28,12 @@ let g:tex_conceal = "abdgm"
 " ======
 set termguicolors
 
-let g:space_vim_dark_background = 234 " Configure darker colour
-color space-vim-dark " Cool modern theme
+let g:space_vim_dark_background = 234 " Configure darker colour for...
+color space-vim-dark                  " ...a cool modern theme!
 
-let g:indentLine_setColors = 0
+" More homogeneous background
 highlight Conceal    ctermbg=NONE guibg=NONE
 highlight LineNr     ctermbg=NONE guibg=NONE
-highlight CursorLine ctermbg=235  guibg=#303030
 
 
 " Encoding

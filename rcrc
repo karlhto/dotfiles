@@ -1,0 +1,4 @@
+# For info, see man rcrc(5)
+# Same as default folder
+DOTFILES_DIRS="$HOME/.dotfiles"
+EXCLUDES="README.md"

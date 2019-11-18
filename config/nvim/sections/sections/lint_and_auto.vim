@@ -43,5 +43,6 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-N>" : "\<S-Tab>"
 
-nnoremap <silent> <C-k> <Plug>(ale_previous_warp)
-nnoremap <silent> <C-j> <Plug>(ale_next_warp)
+" Search between errors
+nnoremap <silent> <leader>n <Plug>(ale_previous_warp)
+nnoremap <silent> <leader>N <Plug>(ale_next_warp)
