@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
 
 # bar settings
-yabai -m config status_bar                   off
+yabai -m config status_bar                   on
 yabai -m config status_bar_text_font         "Hack:Bold:12.0"
 yabai -m config status_bar_icon_font         "Hack:Regular:12.0"
 yabai -m config status_bar_background_color  0xff202020
 yabai -m config status_bar_foreground_color  0xffa8a8a8
-yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
-yabai -m config status_bar_power_icon_strip   
-yabai -m config status_bar_space_icon        
-yabai -m config status_bar_clock_icon        
+yabai -m config status_bar_space_icon_strip  1 2 3 4 5 6 7 8 9 0
+yabai -m config status_bar_power_icon_strip  ⚡
+yabai -m config status_bar_space_icon        🍸
+yabai -m config status_bar_clock_icon        🕑
 
 # global settings
 yabai -m config mouse_follows_focus          off
@@ -21,8 +21,7 @@ yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                on
 yabai -m config window_border                off
 yabai -m config window_border_placement      inset
-yabai -m config window_border_width          4
-yabai -m config window_border_radius         -1.0
+yabai -m config window_border_width          2
 yabai -m config active_window_border_topmost off
 yabai -m config active_window_border_color   0xff775759
 yabai -m config normal_window_border_color   0xff505050
@@ -42,5 +41,8 @@ yabai -m config bottom_padding               20
 yabai -m config left_padding                 20
 yabai -m config right_padding                20
 yabai -m config window_gap                   10
+
+# some rules
+yabai -m rule --add app="^System Preferences$" manage=off border=off
 
 echo "yabai configuration loaded.."
