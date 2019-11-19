@@ -13,5 +13,8 @@ if command -v nvim >/dev/null ; then
 	fi
 fi
 
+if [ ! -d "$HOME/.tmux/plugins/tpm" ] ; then
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
-# vim: set ft=sh :
+# vim: set ft=sh:
