@@ -3,13 +3,38 @@
 # bar settings
 yabai -m config status_bar                   on
 yabai -m config status_bar_text_font         "Hack:Bold:12.0"
-yabai -m config status_bar_icon_font         "Hack:Regular:12.0"
+yabai -m config status_bar_icon_font         "Font Awesome 5 Free:Solid:12.0"
 yabai -m config status_bar_background_color  0xff202020
 yabai -m config status_bar_foreground_color  0xffa8a8a8
-yabai -m config status_bar_space_icon_strip  1 2 3 4 5 6 7 8 9 0
-yabai -m config status_bar_power_icon_strip  ⚡
+yabai -m config status_bar_space_icon_strip       6 7 8 9 0
 yabai -m config status_bar_space_icon        🍸
-yabai -m config status_bar_clock_icon        🕑
+yabai -m config status_bar_clock_icon        
+
+# Update battery status bar icon
+function update_battery_loop() {
+	while true; do
+		# Get the current battery percentage.
+		battery=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
+
+		if [ $battery -gt 84 ]; then
+			yabai -m config status_bar_power_icon_strip battery-full plug
+		elif [ $battery -gt 60 ]; then
+			yabai -m config status_bar_power_icon_strip battery-three-quarters plug
+		elif [ $battery -gt 40 ]; then
+			yabai -m config status_bar_power_icon_strip battery-half plug
+		elif [ $battery -gt 14 ]; then
+			yabai -m config status_bar_power_icon_strip battery-quarter plug
+		else
+			yabai -m config status_bar_power_icon_strip battery-empty plug
+		fi
+
+		# wait 5 minutes
+		sleep $frequency
+	done
+}
+
+# run the function async
+update_battery_loop &
 
 # global settings
 yabai -m config mouse_follows_focus          off
@@ -44,5 +69,6 @@ yabai -m config window_gap                   10
 
 # some rules
 yabai -m rule --add app="^System Preferences$" manage=off border=off
+yabai -m
 
 echo "yabai configuration loaded.."
