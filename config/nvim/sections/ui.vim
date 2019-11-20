@@ -57,7 +57,7 @@ let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 
 let g:airline#extensions#ale#enabled = 1
-let g:airline_extensions = ['branch', 'vimtex']
+let g:airline_extensions = ['branch', 'vimtex', 'tmuxline']
 
 let g:airline_mode_map = {
 			\ '__'     : '-',
@@ -80,6 +80,8 @@ let g:airline_mode_map = {
 			\ ''     : 'V',
 			\ }
 
+let g:tmuxline_powerline_separators = 1
+"let g:tmuxline_preset = 'minimalist'
 
 " NERDTree
 " ========

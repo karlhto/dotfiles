@@ -62,7 +62,7 @@ noremap <S-Tab> :bprevious<cr>
 
 " Close the current buffer and window
 noremap <leader>q :bdelete<cr>
-" Close just the buffer
+" Close just the buffer, not the window
 noremap <leader>d :Bclose<cr>
 
 " Smart way to move between windows

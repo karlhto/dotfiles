@@ -16,6 +16,7 @@ Plug 'w0rp/ale'          " Linting and fixing framework
 " a e s t h e t i c s
 Plug 'vim-airline/vim-airline'        " Vim status bar replacement
 Plug 'vim-airline/vim-airline-themes' " Themes for the status bar
+Plug 'edkolev/tmuxline.vim'           " Copy airline to tmux
 Plug 'Yggdroot/indentLine'            " Visual marks for indentation
 Plug 'powerline/powerline'            " Powerline font integration
 Plug 'liuchengxu/space-vim-dark'      " A nice and modern theme
