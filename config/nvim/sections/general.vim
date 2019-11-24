@@ -17,19 +17,36 @@ set nobackup
 set nowb
 set noswapfile
 
+" Persistent undo
+set undofile
+
+" Super fast grep program written in rust
+set grepprg=rg\ -n\ $*
+
 augroup util
-    autocmd!
+  autocmd!
 
-    " Delete trailing whitespace
-    autocmd BufWrite * :call DeleteTrailingWS()
+  " Fix goyo trouble
+  autocmd User GoyoEnter nested call <SID>goyo_enter()
+  autocmd User GoyoLeave silent! source $HOME/.vimrc
 
-    " Return to last edit position
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exe "normal! g`\"" |
-                \ endif
+  " Delete trailing whitespace
+  autocmd BufWrite * :call DeleteTrailingWS()
+
+  " Return to last edit position
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe 'normal! g`"' |
+        \ endif
 augroup end
 
+" More Goyo fuck
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
 
 " Mappings
 " ========
@@ -75,7 +92,6 @@ noremap <C-l> <C-w>l
 " vimgrep
 " ~~~~~~~
 " Do :help cope if you are unsure what cope is. It's super useful!
-"
 " When you search with vimgrep, display your results in cope by doing:
 "   <leader>cc
 "
@@ -100,3 +116,11 @@ noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>s? z=
+
+" vimtex
+" ~~~~~~
+let g:tex_conceal = ''
+let g:tex_flavor = 'latex'
+let g:vimtex_fold_manual = 1
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_progname = 'nvr'
