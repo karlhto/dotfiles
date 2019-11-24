@@ -77,5 +77,6 @@ yabai -m rule --add app="^System Preferences$" manage=off border=off
 yabai -m rule --add app="^Google Play Music Desktop Player" space=5
 yabai -m rule --add app=Transmission space=6
 yabai -m rule --add app=Steam space=7
+yabai -m rule --add app="^Notes$" manage=off border=off
 
 echo "yabai configuration loaded.."
