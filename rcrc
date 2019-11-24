@@ -2,4 +2,4 @@
 # Same as default folder
 DOTFILES_DIRS="$HOME/.dotfiles"
 SYMLINK_DIRS="config/zsh"
-EXCLUDES="README.md"
+EXCLUDES="README.md up.sh"
