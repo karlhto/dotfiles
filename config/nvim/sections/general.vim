@@ -37,6 +37,8 @@ nnoremap <leader>v :tabedit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ft :tabedit ~/.config/nvim/ftplugin/
 nnoremap <leader>fs :tabedit ~/.config/nvim/sections/
 
+nnoremap <leader>r :source ~/.config/nvim/init.vim<cr>
+
 " Turn off highlighting from hlsearch
 noremap <silent> <leader><cr> :noh<cr>
 
