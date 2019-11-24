@@ -54,8 +54,8 @@ let g:airline_theme = 'minimalist'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 
-let g:airline#extensions#ale#enabled = 1
-let g:airline_extensions = ['branch', 'vimtex', 'tmuxline']
+let g:airline_extensions = ['ale', 'branch', 'vimtex', 'tmuxline', 'wordcount']
+let g:airline#extensions#wordcount#filetypes = ['tex', 'pandoc', 'markdown']
 
 let g:airline_mode_map = {
 			\ '__'     : '-',
