@@ -21,8 +21,6 @@ set colorcolumn=80 " Highlighted column
 set splitbelow     " Split below on horizontal split
 set splitright     " Split to the right on vertical split
 
-let g:tex_conceal = "abdgm"
-
 
 " Colors
 " ======
