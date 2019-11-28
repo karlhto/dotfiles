@@ -34,18 +34,20 @@ Plug 'chase/vim-ansible-yaml'
 
 
 " productivity
-Plug 'junegunn/vim-easy-align' " Format and align by patterns
-Plug 'godlygeek/tabular'       " Align by patterns, used for vim-markdown
-Plug 'haya14busa/is.vim'       " incsearch enhancement
-Plug 'vim-pandoc/vim-pandoc'   " Cool functionality related to pandoc
-Plug 'lervag/vimtex'           " Cool functionality related to latex
-Plug 'airblade/vim-rooter'     " Set project root by looking for files
-Plug 'tpope/vim-fugitive'      " In-editor git stuff
-Plug 'gcmt/taboo.vim'          " Prettier tabs
-Plug 'scrooloose/nerdtree'     " File tree
-Plug 'junegunn/fzf'            " Library stuff for fzf.vim
-Plug 'junegunn/fzf.vim'        " Fuzzy file finding (gotta go fast)
-Plug 'embear/vim-localvimrc'   " Add settings per project
-Plug 'plasticboy/vim-markdown' " Markdown functionality
+Plug 'junegunn/vim-easy-align'     " Format and align by patterns
+Plug 'godlygeek/tabular'           " Align by patterns, used for vim-markdown
+Plug 'haya14busa/is.vim'           " incsearch enhancement
+Plug 'vim-pandoc/vim-pandoc'       " Cool functionality related to pandoc
+Plug 'lervag/vimtex'               " Cool functionality related to latex
+Plug 'airblade/vim-rooter'         " Set project root by looking for files
+Plug 'tpope/vim-fugitive'          " In-editor git stuff
+Plug 'gcmt/taboo.vim'              " Prettier tabs
+Plug 'scrooloose/nerdtree'         " File tree
+Plug 'junegunn/fzf'                " Library stuff for fzf.vim
+Plug 'junegunn/fzf.vim'            " Fuzzy file finding (gotta go fast)
+Plug 'embear/vim-localvimrc'       " Add settings per project
+Plug 'plasticboy/vim-markdown'     " Markdown functionality
+Plug 'aserebryakov/vim-todo-lists' " Some todo list functionality
+Plug 'reedes/vim-pencil'           " Vim can also be used for writing!
 
 call plug#end()
