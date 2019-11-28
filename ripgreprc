@@ -1,2 +1,7 @@
 # Ignore git
---glob=!.git/
+--glob=!.git/*
+
+--type-add
+c:*.{c,h}*
+
+--smart-case
