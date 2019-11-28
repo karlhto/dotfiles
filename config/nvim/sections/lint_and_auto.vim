@@ -67,7 +67,7 @@ set completeopt=noinsert,menuone,noselect
 " =======
 
 " Correct root for project needed for many linters
-let g:rooter_patterns = ['Makefile', '.git/', 'build.xml', 'cargo.toml']
+let g:rooter_patterns = ['.git/', 'build.xml', 'cargo.toml']
 
 let g:ale_lint_on_text_changed = 'never'
 
@@ -94,7 +94,7 @@ let g:ale_haskell_linters = ['stack-ghc-mod', 'hlint']
 " If auto completion suggestions are visible, tab acts differently
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-N>" : "\<S-Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Search between errors
 nnoremap <silent> <leader>n <Plug>(ale_previous_warp)

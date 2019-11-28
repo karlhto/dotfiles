@@ -50,7 +50,7 @@ endfunction
 
 " Mappings
 " ========
-nnoremap <leader>v :tabedit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>v  :tabedit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ft :tabedit ~/.config/nvim/ftplugin/
 nnoremap <leader>fs :tabedit ~/.config/nvim/sections/
 
@@ -76,7 +76,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Switch between buffers in normal mode, nice utility
-noremap <Tab> :bnext<cr>
+noremap <Tab>   :bnext<cr>
 noremap <S-Tab> :bprevious<cr>
 
 " Close the current buffer and window
@@ -90,22 +90,18 @@ noremap <C-k> <C-w>k
 noremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
 
+" Speedy file finding
+nnoremap <leader>p  :FZF<cr>
+nnoremap <leader>P  :FZF!<cr>
+nnoremap <leader>ph :FZF ~<cr>
+
 
 " vimgrep
 " ~~~~~~~
 " Do :help cope if you are unsure what cope is. It's super useful!
-" When you search with vimgrep, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
 noremap <leader>cc :botright cope<cr>
-noremap <leader>n :cn<cr>
-noremap <leader>p :cp<cr>
+noremap <leader>cn :cn<cr>
+noremap <leader>cp :cp<cr>
 
 
 " spelling
