@@ -31,6 +31,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'mboughaba/i3config.vim'
 Plug 'cespare/vim-toml'
 Plug 'chase/vim-ansible-yaml'
+Plug 'neilhwatson/vim_cf3'
 
 
 " productivity

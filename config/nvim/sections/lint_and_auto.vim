@@ -14,7 +14,7 @@ set completeopt=noinsert,menuone,noselect
 " =======
 
 " Correct root for project needed for many linters
-let g:rooter_patterns = ['Makefile', '.git/', 'build.xml', 'cargo.toml']
+let g:rooter_patterns = ['.git/', 'build.xml', 'cargo.toml']
 
 let g:ale_lint_on_text_changed = 'never'
 
