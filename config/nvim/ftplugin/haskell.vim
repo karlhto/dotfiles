@@ -1,3 +1,7 @@
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
 " haskell
 " syntax
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
