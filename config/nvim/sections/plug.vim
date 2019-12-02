@@ -31,6 +31,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'mboughaba/i3config.vim'
 Plug 'cespare/vim-toml'
 Plug 'chase/vim-ansible-yaml'
+Plug 'neilhwatson/vim_cf3'
 
 
 " productivity
@@ -47,6 +48,7 @@ Plug 'junegunn/fzf'                " Library stuff for fzf.vim
 Plug 'junegunn/fzf.vim'            " Fuzzy file finding (gotta go fast)
 Plug 'embear/vim-localvimrc'       " Add settings per project
 Plug 'plasticboy/vim-markdown'     " Markdown functionality
-Plug 'aserebryakov/vim-todo-lists' " Todo lists
+Plug 'aserebryakov/vim-todo-lists' " Some todo list functionality
+Plug 'reedes/vim-pencil'           " Vim can also be used for writing!
 
 call plug#end()
