@@ -12,3 +12,5 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 #export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 #export TERM=xterm-256color
+
+alias tmux='tmux -2'
