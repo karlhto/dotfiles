@@ -43,9 +43,8 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  $HOME/.local/bin
-  $HOME/.cargo/bin
-  $HOME/Library/Python/3.7/bin
+  ~/.local/bin
+  ~/.cargo/bin
   /usr/local/{bin,sbin}
   $path
 )

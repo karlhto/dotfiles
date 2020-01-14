@@ -9,6 +9,7 @@ fi
 
 # Speedy FZF needs rg
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export NTECH_ROOT=$HOME/northern.tech
 
 #export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 #export TERM=xterm-256color
