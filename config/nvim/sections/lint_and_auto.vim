@@ -70,25 +70,24 @@ set completeopt=noinsert,menuone,noselect
 let g:rooter_patterns = ['.git/', 'build.xml', 'cargo.toml']
 
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_insert_leave = 0
+
+let g:ale_linters = {
+      \'python':  ['pylint', 'flake8'],
+      \'c':       ['gcc'],
+      \'rust':    ['rls'],
+      \'haskell': ['stack-ghc', 'hie']}
 
 " python
-let g:ale_python_linters = ['pylint', 'flake8']
 let g:ale_python_pylint_auto_pipenv = 1
 let g:ale_python_flake8_auto_pipenv = 1
 let g:semshi#error_sign = v:false
 
 " C
-let g:ale_c_linters = ['gcc']
 let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=c11'
 
-" Rust
-let g:ale_rust_linters = ['rls']
-"let g:ale_rust_fixers  = ['rustfmt']
-
 " Haskell
-let g:ale_haskell_linters = ['stack-ghc-mod', 'hlint']
-
+let g:ale_haskell_hie_executable = "/usr/bin/hie-wrapper"
 
 
 " Mappings
