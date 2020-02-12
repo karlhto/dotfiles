@@ -78,6 +78,12 @@ let g:ale_linters = {
       \'rust':    ['rls'],
       \'haskell': ['stack-ghc', 'hie']}
 
+let g:ale_linters = {
+      \'python': ['pylint', 'flake8'],
+      \'c': ['gcc'],
+      \'rust': ['rls'],
+      \'haskell': ['hlint']}
+
 " python
 let g:ale_python_pylint_auto_pipenv = 1
 let g:ale_python_flake8_auto_pipenv = 1
@@ -88,7 +94,6 @@ let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=c11'
 
 " Haskell
 let g:ale_haskell_hie_executable = "/usr/bin/hie-wrapper"
-
 
 " Mappings
 " ========
