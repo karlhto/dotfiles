@@ -86,3 +86,19 @@ let g:tmuxline_powerline_separators = 1
 noremap <leader>a :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.class$', '\.o$', '\.gch$', '\.png']
 let NERDTreeWinSize = 22
+
+" Pencil && Pandoc
+" ================
+
+let g:pandoc#formatting#mode = 's'
+let g:pandoc#formatting#textwidth = 0
+let g:pandoc#keyboard#sections#header_style = 's'
+let g:pandoc#folding#fold_yaml = 1
+let g:pandoc#folding#mode = 'stacked'
+
+let g:pandoc#biblio#bibs = ['../bibliography.bib']
+
+let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#joinspaces = 1
+let g:pencil#conceallevel = 2
+let g:airline_section_x = '%{PencilMode()}'
