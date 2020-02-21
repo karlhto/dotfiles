@@ -102,3 +102,10 @@ let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#joinspaces = 1
 let g:pencil#conceallevel = 2
 let g:airline_section_x = '%{PencilMode()}'
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType pandoc       call pencil#init()
+  autocmd FileType tex          call pencil#init()
+augroup END
