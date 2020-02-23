@@ -126,3 +126,13 @@ elseif has('unix')
   let g:vimtex_view_method = 'zathura'
 endif
 let g:vimtex_compiler_progname = 'nvr'
+
+" vim-pencil
+" ~~~~~~~~~~
+let g:pencil#wrapModeDefault = 'soft'
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType pandoc       call pencil#init()
+  autocmd FileType tex          call pencil#init()
+augroup END
