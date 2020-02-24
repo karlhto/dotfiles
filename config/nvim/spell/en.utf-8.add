@@ -68,7 +68,6 @@ CACEP
 CDAP
 InterNetwork
 P1
-p
 statefulness
 CDAP's
 ethernet
@@ -88,3 +87,11 @@ APIid
 IPCP
 DAs
 datalink
+AEs
+AE
+APN
+APIs
+IPCP
+IPCPs
+CEP
+FPU
