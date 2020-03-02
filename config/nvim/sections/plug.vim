@@ -52,5 +52,6 @@ Plug 'embear/vim-localvimrc'       " Add settings per project
 Plug 'plasticboy/vim-markdown'     " Markdown functionality
 Plug 'aserebryakov/vim-todo-lists' " Some todo list functionality
 Plug 'reedes/vim-pencil'           " Vim can also be used for writing!
+Plug 'zhimsel/vim-stay'            " Return where you belong
 
 call plug#end()

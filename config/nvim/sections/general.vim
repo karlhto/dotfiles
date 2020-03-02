@@ -32,12 +32,6 @@ augroup util
 
   " Delete trailing whitespace
   autocmd BufWrite * :call DeleteTrailingWS()
-
-  " Return to last edit position
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe 'normal! g`"' |
-        \ endif
 augroup end
 
 " More Goyo fuck

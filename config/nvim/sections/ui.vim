@@ -21,6 +21,7 @@ set colorcolumn=80 " Highlighted column
 set splitbelow     " Split below on horizontal split
 set splitright     " Split to the right on vertical split
 
+set viewoptions=cursor,folds,slash,unix
 
 " Colors
 " ======
