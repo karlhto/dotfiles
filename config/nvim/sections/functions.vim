@@ -2,7 +2,7 @@
 " ----------------------
 
 command! Bclose call <SID>BufClose()
-function! <SID>BufClose()
+function! <SID>BufClose() abort
     let l:cur_buf_num = bufnr("%")
     let l:alt_buf_num = bufnr("#")
 
@@ -22,7 +22,7 @@ function! <SID>BufClose()
 endfunction
 
 " Delete trailing white space on save
-function! DeleteTrailingWS()
+function! DeleteTrailingWS() abort
     if (&ft =~ 'pandoc' || &ft =~ 'tex')
         return
     endif

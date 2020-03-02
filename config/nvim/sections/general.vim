@@ -115,17 +115,24 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>s? z=
 
-" vimtex
-" ~~~~~~
+" vimtex/pandoc
+" ~~~~~~~~~~~~~
+
+" tex
 let g:tex_conceal = ''
 let g:tex_flavor = 'latex'
-let g:vimtex_fold_manual = 1
+let g:tex_fold_enabled = 1
+let g:vimtex_fold_enabled = 1
+let g:vimtex_format_enabled = 1
 if has('macunix')
   let g:vimtex_view_method = 'skim'
 elseif has('unix')
   let g:vimtex_view_method = 'zathura'
 endif
 let g:vimtex_compiler_progname = 'nvr'
+
+" pandoc
+let pandoc_fold_enabled = 1
 
 " vim-pencil
 " ~~~~~~~~~~

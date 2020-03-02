@@ -21,6 +21,7 @@ Plug 'powerline/powerline'            " Powerline font integration
 Plug 'liuchengxu/space-vim-dark'      " A nice and modern theme
 Plug 'junegunn/goyo.vim'              " Distraction free mode
 Plug 'junegunn/limelight.vim'         " Darken everything but paragraph
+Plug 'Konfekt/FastFold'               " Faster folding
 
 
 " syntax highlighting
@@ -31,6 +32,7 @@ Plug 'mboughaba/i3config.vim'
 Plug 'cespare/vim-toml'
 Plug 'chase/vim-ansible-yaml'
 Plug 'neilhwatson/vim_cf3'
+Plug 'arakashic/chromatica.nvim'
 
 
 " productivity
@@ -38,6 +40,7 @@ Plug 'junegunn/vim-easy-align'     " Format and align by patterns
 Plug 'godlygeek/tabular'           " Align by patterns, used for vim-markdown
 Plug 'haya14busa/is.vim'           " incsearch enhancement
 Plug 'vim-pandoc/vim-pandoc'       " Cool functionality related to pandoc
+Plug 'vim-pandoc/vim-pandoc-after' " Plugin integration
 Plug 'lervag/vimtex'               " Cool functionality related to latex
 Plug 'airblade/vim-rooter'         " Set project root by looking for files
 Plug 'tpope/vim-fugitive'          " In-editor git stuff

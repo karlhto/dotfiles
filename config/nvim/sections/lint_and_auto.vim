@@ -66,27 +66,30 @@ set completeopt=noinsert,menuone,noselect
 " Linting
 " =======
 
+" TODO remove this?
 " Correct root for project needed for many linters
 let g:rooter_patterns = ['.git/', 'build.xml', 'cargo.toml']
 
+" When to lint
 let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_insert_leave = 0
 
-let g:ale_linters = {
+" Cooler warn/err symbols
+let g:ale_sign_error = "◉"
+let g:ale_sign_warning = "◉"
+
+" Linters and fixers
+let g:ale_fixers         = ['prettier']
+let g:ale_linter_aliases = {'pandoc': ['markdown']}
+let g:ale_linters        = {
       \'python':  ['pylint', 'flake8'],
       \'c':       ['gcc'],
       \'rust':    ['rls'],
-      \'haskell': ['stack-ghc', 'hie']}
-
-let g:ale_linters = {
-      \'python': ['pylint', 'flake8'],
-      \'c': ['gcc'],
-      \'rust': ['rls'],
-      \'haskell': ['hlint']}
+      \'haskell': ['stack-ghc', 'hie']
+      \}
 
 " python
-let g:ale_python_pylint_auto_pipenv = 1
-let g:ale_python_flake8_auto_pipenv = 1
+let g:ale_python_auto_pipenv = 1
 let g:semshi#error_sign = v:false
 
 " C
