@@ -1,8 +1,8 @@
 " Autocompletion and linting
 " --------------------------
 
-" Autocompletion
-" ==============
+" autocompletion
+" ~~~~~~~~~~~~~~
 augroup ncm2_bufenter
   autocmd!
   autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -63,8 +63,8 @@ augroup end
 set completeopt=noinsert,menuone,noselect
 
 
-" Linting
-" =======
+" linting and fixing
+" ~~~~~~~~~~~~~~~~~~
 
 " TODO remove this?
 " Correct root for project needed for many linters
@@ -98,8 +98,9 @@ let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=c11'
 " Haskell
 let g:ale_haskell_hie_executable = "/usr/bin/hie-wrapper"
 
-" Mappings
-" ========
+
+" mappings
+" ~~~~~~~~
 
 " If auto completion suggestions are visible, tab acts differently
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")

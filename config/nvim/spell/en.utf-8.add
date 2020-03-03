@@ -30,7 +30,6 @@ myofibrils
 myoglobin
 myofibril
 myofibrillar
-sacroplasmic
 sarcoplasmic
 sarcoplasm
 myosin
@@ -89,7 +88,6 @@ DAs
 datalink
 AEs
 AE
-APN
 APIs
 IPCP
 IPCPs
@@ -112,3 +110,4 @@ SDU
 SDUs
 RIBd
 DAP
+sharding

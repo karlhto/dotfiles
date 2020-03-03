@@ -1,9 +1,13 @@
+" Plugins
+" -------
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'roxma/nvim-yarp' " No UpdateRemotePlugins
 
 
 " auto-completion and linting
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plug 'ncm2/ncm2'         " Auto-completion framework, with modules...
 Plug 'ncm2/ncm2-path'    " ...for paths
 Plug 'ncm2/ncm2-pyclang' " ...for clang
@@ -14,8 +18,10 @@ Plug 'w0rp/ale'          " Linting and fixing framework
 
 
 " a e s t h e t i c s
+" ~~~~~~~~~~~~~~~~~~~
 Plug 'vim-airline/vim-airline'        " Vim status bar replacement
 Plug 'vim-airline/vim-airline-themes' " Themes for the status bar
+
 Plug 'edkolev/tmuxline.vim'           " Copy airline to tmux
 Plug 'powerline/powerline'            " Powerline font integration
 Plug 'liuchengxu/space-vim-dark'      " A nice and modern theme
@@ -25,6 +31,7 @@ Plug 'Konfekt/FastFold'               " Faster folding
 
 
 " syntax highlighting
+" ~~~~~~~~~~~~~~~~~~~
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " semshi = python syntax
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'neovimhaskell/haskell-vim'
@@ -36,6 +43,7 @@ Plug 'arakashic/chromatica.nvim'
 
 
 " productivity
+" ~~~~~~~~~~~~
 Plug 'junegunn/vim-easy-align'     " Format and align by patterns
 Plug 'godlygeek/tabular'           " Align by patterns, used for vim-markdown
 Plug 'haya14busa/is.vim'           " incsearch enhancement

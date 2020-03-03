@@ -42,12 +42,16 @@ function! s:goyo_enter()
   Limelight
 endfunction
 
-" Mappings
-" ========
+
+" mappings
+" ~~~~~~~~
+
+" Convenience stuff for accessing config files
 nnoremap <leader>v  :tabedit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ft :tabedit ~/.config/nvim/ftplugin/
 nnoremap <leader>fs :tabedit ~/.config/nvim/sections/
 
+" In case of some change, re-source init.vim
 nnoremap <leader>r :source ~/.config/nvim/init.vim<cr>
 
 " Turn off highlighting from hlsearch
@@ -60,7 +64,7 @@ noremap <leader>pp :setlocal paste!<cr>
 noremap <silent> j gj
 noremap <silent> k gk
 
-" Arguably more accessible than ^
+" Arguably more accessible than ^ (depending on layout)
 noremap 0 ^
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -109,10 +113,9 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>s? z=
 
-" vimtex/pandoc
-" ~~~~~~~~~~~~~
 
-" tex
+" vimtex
+" ~~~~~~
 let g:tex_conceal = ''
 let g:tex_flavor = 'latex'
 let g:tex_fold_enabled = 1
@@ -125,12 +128,23 @@ elseif has('unix')
 endif
 let g:vimtex_compiler_progname = 'nvr'
 
+
 " pandoc
-let pandoc_fold_enabled = 1
+" ~~~~~~
+let g:pandoc#formatting#mode = 's'
+let g:pandoc#formatting#textwidth = 0
+let g:pandoc#keyboard#sections#header_style = 's'
+let g:pandoc#folding#fold_yaml = 1
+let g:pandoc#folding#mode = 'stacked'
+let g:pandoc#biblio#bibs = ['../bibliography.bib']
+
 
 " vim-pencil
 " ~~~~~~~~~~
 let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#joinspaces = 1
+let g:pencil#conceallevel = 2
+
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()

@@ -1,8 +1,8 @@
 " User interface configuration
 " ----------------------------
 
-" Standard stuff
-" ==============
+" standard stuff
+" ~~~~~~~~~~~~~~
 set relativenumber " Relative line numbers from cursor line
 set number         " ...and the line number of the cursor line
 
@@ -23,8 +23,9 @@ set splitright     " Split to the right on vertical split
 
 set viewoptions=cursor,folds,slash,unix
 
-" Colors
-" ======
+
+" colors
+" ~~~~~~
 set termguicolors
 
 let g:space_vim_dark_background = 234 " Configure darker colour for...
@@ -35,8 +36,8 @@ highlight Conceal    ctermbg=NONE guibg=NONE
 highlight LineNr     ctermbg=NONE guibg=NONE
 
 
-" Encoding
-" ========
+" encoding
+" ~~~~~~~~
 set encoding=utf8
 set ffs=unix,dos,mac
 
@@ -44,19 +45,22 @@ set spelllang=en
 set mouse=a
 
 
-" Syntax
-" ======
+" syntax
+" ~~~~~~
 let g:load_doxygen_syntax = 1
 
 
-" Airline
-" =======
+" airline
+" ~~~~~~~
 let g:airline_theme = 'minimalist'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
+" same theme for tmux
+let g:tmuxline_powerline_separators = 1
 
 let g:airline_extensions = ['ale', 'branch', 'vimtex', 'tmuxline', 'wordcount']
 "let g:airline#extensions#wordcount#filetypes = ['tex', 'pandoc', 'markdown']
+let g:airline_section_x = '%{PencilMode()}'
 
 let g:airline_mode_map = {
 			\ '__'     : '-',
@@ -79,34 +83,9 @@ let g:airline_mode_map = {
 			\ ''     : 'V',
 			\ }
 
-let g:tmuxline_powerline_separators = 1
-"let g:tmuxline_preset = 'minimalist'
 
 " NERDTree
-" ========
+" ~~~~~~~~
 noremap <leader>a :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.class$', '\.o$', '\.gch$', '\.png']
 let NERDTreeWinSize = 22
-
-" Pencil && Pandoc
-" ================
-
-let g:pandoc#formatting#mode = 's'
-let g:pandoc#formatting#textwidth = 0
-let g:pandoc#keyboard#sections#header_style = 's'
-let g:pandoc#folding#fold_yaml = 1
-let g:pandoc#folding#mode = 'stacked'
-
-let g:pandoc#biblio#bibs = ['../bibliography.bib']
-
-let g:pencil#wrapModeDefault = 'soft'
-let g:pencil#joinspaces = 1
-let g:pencil#conceallevel = 2
-let g:airline_section_x = '%{PencilMode()}'
-
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType pandoc       call pencil#init()
-  autocmd FileType tex          call pencil#init()
-augroup END
