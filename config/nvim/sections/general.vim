@@ -131,12 +131,25 @@ let g:vimtex_compiler_progname = 'nvr'
 
 " pandoc
 " ~~~~~~
+
+" Formatting
 let g:pandoc#formatting#mode = 's'
-let g:pandoc#formatting#textwidth = 0
+" Quci latex-command generation
+let g:pandoc#command#autoexec_command = 'Pandoc pdf'
+" lualatex default engine
+let g:pandoc#command#latex_engine = 'lualatex'
 let g:pandoc#keyboard#sections#header_style = 's'
 let g:pandoc#folding#fold_yaml = 1
 let g:pandoc#folding#mode = 'stacked'
-let g:pandoc#biblio#bibs = ['../bibliography.bib']
+let g:pandoc#biblio#bibs = ['bibliography.bib']
+let g:pandoc#after#modules#enabled = ['fastfold']
+
+if executable('pandoc-citeproc')
+  " Use citeproc backend for searching in bibliographies
+	let g:pandoc#completion#bib#mode = 'citeproc'
+	" Use previews in the information
+	let g:pandoc#completion#bib#use_preview = 1
+endif
 
 
 " vim-pencil

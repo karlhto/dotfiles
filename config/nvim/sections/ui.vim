@@ -16,12 +16,14 @@ set hidden         " Hide buffers when abandoned
 set magic          " For regular expressions turn magic on
 set showmatch      " Show matching brackets
 set cursorline     " Show cursor line
-set colorcolumn=80 " Highlighted column
+set colorcolumn=+1 " Highlighted column
 
 set splitbelow     " Split below on horizontal split
 set splitright     " Split to the right on vertical split
 
 set viewoptions=cursor,folds,slash,unix
+set viewoptions-=options
+set foldmethod=marker
 
 
 " colors
@@ -29,11 +31,15 @@ set viewoptions=cursor,folds,slash,unix
 set termguicolors
 
 let g:space_vim_dark_background = 234 " Configure darker colour for...
-color space-vim-dark                  " ...a cool modern theme!
+colorscheme space-vim-dark            " ...a cool modern theme!
+set background=dark
 
 " More homogeneous background
 highlight Conceal    ctermbg=NONE guibg=NONE
 highlight LineNr     ctermbg=NONE guibg=NONE
+
+" Colour column
+highlight ColorColumn ctermbg=20
 
 
 " encoding
