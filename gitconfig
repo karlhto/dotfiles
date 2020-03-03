@@ -1,0 +1,10 @@
+[commit]
+  gpgsign = true
+[core]
+  editor = nvim
+[user]
+  name = "Karl Hole Totland"
+  email = karl@totland.dev
+  signingkey = "0x59DBAD828B7C1918"
+
+# vim: set et sw=2 sts=2 ft=gitconfig:
