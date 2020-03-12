@@ -59,10 +59,12 @@ floating_modifier $mod
 
 # Speedy editor start
 bindsym $mod+Return exec $editor
-bindsym $mod+Control+Return exec $editor -r floating
+bindsym $mod+Control+Return exec $editor --class floating
 
-bindsym $mod+q kill
-bindsym $mod+d exec "rofi -show drun -width 35 -lines 10 -theme onedark"
+bindsym $mod+q   kill
+bindsym $mod+d   exec "rofi -show drun"
+bindsym Mod1+Tab exec --no-startup-id "rofi -show window"
+bindsym $mod+s exec --no-startup-id "rofimoji"
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -222,8 +224,10 @@ workspace $ws5 output DP-2
 
 assign [class="^Chromium"] $ws2
 assign [class="^Google Play Music Desktop Player"] $ws5
+for_window [class="^Toggl Desktop$"] floating enable, resize set 500 600, sticky enable
 assign [class="^Slack"] $ws3
 
+for_window [class="^Toggl Desktop$"] floating enable, resize set 500 600, sticky enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
