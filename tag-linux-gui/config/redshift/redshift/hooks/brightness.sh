@@ -1,0 +1,1 @@
+/home/karlhto/.dotfiles/tag-linux/config/redshift/hooks/brightness.sh
