@@ -224,7 +224,6 @@ workspace $ws5 output DP-2
 
 assign [class="^Chromium"] $ws2
 assign [class="^Google Play Music Desktop Player"] $ws5
-for_window [class="^Toggl Desktop$"] floating enable, resize set 500 600, sticky enable
 assign [class="^Slack"] $ws3
 
 for_window [class="^Toggl Desktop$"] floating enable, resize set 500 600, sticky enable
