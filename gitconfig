@@ -3,6 +3,6 @@
 [user]
   name = "Karl Hole Totland"
   email = karl@totland.dev
-  signingkey = "0x59DBAD828B7C1918"
+  signingkey = "0x044CD3C1ECF82E4E"
 
 # vim: set et sw=2 sts=2 ft=gitconfig:
