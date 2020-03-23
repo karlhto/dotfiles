@@ -9,9 +9,11 @@ fi
 
 # Speedy FZF needs rg
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-export NTECH_ROOT=$HOME/northern.tech
 
 #export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 #export TERM=xterm-256color
 
 alias tmux='tmux -2'
+
+# Extract default GPG key ID
+export KEYID=$(gpgconf --list-options gpg | awk -F: '$1 == "default-key" {print substr($10,2)}')

@@ -19,5 +19,3 @@ mcd () {
 
 # Powerlevel10k
 source ${ZDOTDIR}/.purepower
-
-alias tmux='tmux -2'
