@@ -56,7 +56,12 @@ path=(
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
-export LESS='-g -i -M -R -S -w -z-4'
+export LESS='-asrRix4'
+
+if [[ "$OSTYPE" == linux-gnu* ]]; then
+  # -S is used here instead, as truncating makes for a more readable log (IMO)
+  export SYSTEMD_LESS='-aSrRix4'
+fi
 
 # Set the Less input preprocessor.
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.

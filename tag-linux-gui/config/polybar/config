@@ -81,7 +81,7 @@ font-3 = Noto Color Emoji:size=10:scale=10:pixelsize=13;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = updates fs-root fs-home memory cpu wlan eth net-speed openvpn battery temperature volume
+modules-right = updates fs-root fs-home fs-storage memory cpu wlan eth net-speed openvpn battery temperature volume
 
 ; Set not-likely-to-change settings
 ;
@@ -102,7 +102,7 @@ inherit = bar/first
 monitor = DP-0
 ; Device specific settings
 eth-interface = enp8s0
-modules-right = updates fs-root fs-home wlan eth net-speed openvpn battery volume
+modules-right = updates fs-root fs-home fs-storage wlan eth net-speed openvpn battery volume
 
 
 [bar/desktop-right]
@@ -126,7 +126,7 @@ type = internal/fs
 interval = 30
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-} %percentage_used%%
+label-mounted = %{F#e0e0e0}󰋊%{F-} %percentage_used%%
 label-mounted-foreground = ${colors.foreground-sec}
 label-mounted-underline = #88aaee
 label-unmounted = %mountpoint% not mounted
@@ -138,7 +138,19 @@ type = internal/fs
 interval = 30
 mount-0 = /home
 
-label-mounted = %{F#0a81f5}~%{F-} %percentage_used%%
+label-mounted = %{F#e0e0e0}󰋜%{F-} %percentage_used%%
+label-mounted-foreground = ${colors.foreground-sec}
+label-mounted-underline = #88aaee
+label-unmounted = %mountpoint% not mounted
+
+
+[module/fs-storage]
+type = internal/fs
+
+interval = 30
+mount-0 = /storage
+
+label-mounted = %{F#e0e0e0}󰒋%{F-} %percentage_used%%
 label-mounted-foreground = ${colors.foreground-sec}
 label-mounted-underline = #88aaee
 label-unmounted = %mountpoint% not mounted
@@ -422,7 +434,7 @@ ramp-foreground = ${colors.foreground}
 
 [module/updates]
 type = custom/script
-exec = pacman -Qqu | wc -l
+exec = yay -Qqu | wc -l
 tail = false
 interval = 60
 format-prefix = 󰑐
