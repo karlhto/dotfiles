@@ -1,6 +1,7 @@
-# i3 config file (v4)
+# i3 config file
 set $mod Mod4
 set $editor alacritty
+set $locker $HOME/.local/bin/lock.sh
 
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
@@ -124,15 +125,13 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec i3-msg exit
 
-set $Locker i3lock-next && sleep 1
-
 # Shutdown, Suspend, Lock (e)
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym l exec --no-startup-id $locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend && $Locker, mode "default"
-    bindsym h exec --no-startup-id systemctl hibernate && $Locker, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend && $locker, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate && $locker, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
@@ -209,6 +208,12 @@ mode "$mode_gaps_outer" {
     bindsym Escape mode "default"
 }
 
+# Support for pausing stuff
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 # screenshots
 set $sspath "$HOME/Pictures/$(date +%Y-%m-%dT%H:%M:%S).png"
 bindsym --release $mod+p exec --no-startup-id $HOME/.local/bin/monitorshot $sspath
@@ -236,7 +241,7 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 # background, compositor and polybar
-exec --no-startup-id feh --bg-fill --recursive --randomize ~/.wallpaper
+exec --no-startup-id feh --bg-fill --recursive --randomize /storage/Wallpapers
 exec --no-startup-id picom -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
