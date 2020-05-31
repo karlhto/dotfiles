@@ -166,7 +166,7 @@ pin-workspaces = true
 
 ws-icon-0  = 1;%{F#e6194B} %{T3} %{T-}%{F-} cli
 ws-icon-1  = 2;%{F#3cb44b} %{T3} %{T-}%{F-} web
-ws-icon-2  = 3;%{F#ffe119} %{T3} %{T-}%{F-} irc
+ws-icon-2  = 3;%{F#ffe119} %{T3} %{T-}%{F-} com
 ws-icon-3  = 4;%{F#4363d8} %{T3} %{T-}%{F-} doc
 ws-icon-4  = 5;%{F#f58231} %{T3} %{T-}%{F-} med
 ws-icon-5  = 6;%{F#911eb4} %{T3} %{T-}%{F-} ls
@@ -318,7 +318,7 @@ label-foreground = ${colors.foreground-sec}
 type = internal/date
 interval = 5
 
-date = "%d. %b"
+date = "%d. %b %Y"
 time = %H:%M
 
 label = %time% %date%
