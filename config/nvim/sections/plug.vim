@@ -8,13 +8,7 @@ Plug 'roxma/nvim-yarp' " No UpdateRemotePlugins
 
 " auto-completion and linting
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Plug 'ncm2/ncm2'         " Auto-completion framework, with modules...
-Plug 'ncm2/ncm2-path'    " ...for paths
-Plug 'ncm2/ncm2-pyclang' " ...for clang
-Plug 'ncm2/ncm2-jedi'    " ...for python
-Plug 'ncm2/ncm2-racer'   " ...for rust
-
-Plug 'w0rp/ale'          " Linting and fixing framework
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " this plugin is jesus
 
 
 " a e s t h e t i c s
@@ -40,6 +34,8 @@ Plug 'cespare/vim-toml'
 Plug 'chase/vim-ansible-yaml'
 Plug 'neilhwatson/vim_cf3'
 Plug 'arakashic/chromatica.nvim'
+Plug 'pearofducks/ansible-vim'
+Plug 'jackguo380/vim-lsp-cxx-highlight' " semantic syntax highlighting
 
 
 " productivity
@@ -50,7 +46,6 @@ Plug 'haya14busa/is.vim'           " incsearch enhancement
 Plug 'vim-pandoc/vim-pandoc'       " Cool functionality related to pandoc
 Plug 'vim-pandoc/vim-pandoc-after' " Plugin integration
 Plug 'lervag/vimtex'               " Cool functionality related to latex
-Plug 'airblade/vim-rooter'         " Set project root by looking for files
 Plug 'tpope/vim-fugitive'          " In-editor git stuff
 Plug 'gcmt/taboo.vim'              " Prettier tabs
 Plug 'scrooloose/nerdtree'         " File tree
@@ -61,5 +56,10 @@ Plug 'plasticboy/vim-markdown'     " Markdown functionality
 Plug 'aserebryakov/vim-todo-lists' " Some todo list functionality
 Plug 'reedes/vim-pencil'           " Vim can also be used for writing!
 Plug 'zhimsel/vim-stay'            " Return where you belong
+Plug 'antoinemadec/coc-fzf'        " Fzf integration with fzf
+
+" what
+" ~~~~
+"Plug 'hugolgst/vimsence'
 
 call plug#end()
