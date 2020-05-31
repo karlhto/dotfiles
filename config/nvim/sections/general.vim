@@ -95,6 +95,7 @@ noremap <C-l> <C-w>l
 nnoremap <C-p>  :FZF<cr>
 nnoremap <leader>P  :FZF!<cr>
 nnoremap <leader>ph :FZF ~<cr>
+nnoremap <space><space> :Buffers<cr>
 
 " Some resizing stuff for windows
 nnoremap <silent> <leader>= :exe "resize " . (winheight(0) * 3/2)<cr>

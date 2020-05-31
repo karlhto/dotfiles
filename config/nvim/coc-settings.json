@@ -1,6 +1,13 @@
 {
+    "diagnostic.errorSign": "",
+    "diagnostic.warningSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.checkCurrentLine": true,
+
     "clangd.semanticHighlighting": true,
+
     "git.enableGutters": false,
+
     "cSpell.enabledLanguageIds": [
 	"markdown",
 	"pandoc",
