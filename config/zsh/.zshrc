@@ -3,6 +3,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+export PATH=$HOME/.local/bin:$PATH
 
 # Customize to your needs...
 alias v=nvim

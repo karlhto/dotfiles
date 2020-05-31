@@ -171,7 +171,6 @@ zstyle ':prezto:module:ssh:load' identities 'id_ed25519'
 zstyle ':prezto:module:syntax-highlighting' highlighters \
    'main' \
    'brackets' \
-   'pattern' \
    'line' \
    'root'
 
