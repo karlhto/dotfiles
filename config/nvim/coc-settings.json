@@ -6,11 +6,5 @@
 
     "clangd.semanticHighlighting": true,
 
-    "git.enableGutters": false,
-
-    "cSpell.enabledLanguageIds": [
-	"markdown",
-	"pandoc",
-	"tex"
-    ]
+    "git.enableGutters": false
 }
