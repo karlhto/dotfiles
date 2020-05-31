@@ -25,13 +25,6 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .clangd --exclude .gi
 export KEYID=$(gpgconf --list-options gpg | awk -F: '$1 == "default-key" {print substr($10,2)}')
 
 
-# Aliases
-# =======
-alias tmux='tmux -2'
-alias v=nvim
-alias i3edit="v $HOME/.config/i3/config"
-
-
 # Functions
 # =========
 mcd () {
