@@ -14,7 +14,7 @@ set wildignore=*.o,*~,*.pyc " ?
 
 " Turn backup off, since most stuff is in SVN, git etc. anyway
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Persistent undo
@@ -32,6 +32,9 @@ augroup util
 
   " Delete trailing whitespace
   autocmd BufWrite * :call DeleteTrailingWS()
+
+  " OMNeT++ NED syntax
+  autocmd BufNewFile,BufRead *.ned set syntax=ned ft=ned
 augroup end
 
 " More Goyo fuck
@@ -52,7 +55,7 @@ nnoremap <leader>ft :tabedit ~/.config/nvim/ftplugin/
 nnoremap <leader>fs :tabedit ~/.config/nvim/sections/
 
 " In case of some change, re-source init.vim
-nnoremap <leader>r :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>R :source ~/.config/nvim/init.vim<cr>
 
 " Turn off highlighting from hlsearch
 noremap <silent> <leader><cr> :noh<cr>
@@ -89,9 +92,13 @@ noremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
 
 " Speedy file finding
-nnoremap <leader>p  :FZF<cr>
+nnoremap <C-p>  :FZF<cr>
 nnoremap <leader>P  :FZF!<cr>
 nnoremap <leader>ph :FZF ~<cr>
+
+" Some resizing stuff for windows
+nnoremap <silent> <leader>= :exe "resize " . (winheight(0) * 3/2)<cr>
+nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
 
 
 " vimgrep
