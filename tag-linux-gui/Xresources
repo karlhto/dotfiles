@@ -1,0 +1,11 @@
+! Xft font configuration
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+Xft.hintstyle: hintfull
+
+! Xcursors settings
+! Workaround for big cursor when using virtual monitor.
+Xcursor.size: 16
