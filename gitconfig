@@ -4,5 +4,10 @@
   name = "Karl Hole Totland"
   email = karl@totland.dev
   signingkey = "0x044CD3C1ECF82E4E"
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
 
 # vim: set et sw=2 sts=2 ft=gitconfig:
