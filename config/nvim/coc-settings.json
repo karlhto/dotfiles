@@ -6,5 +6,8 @@
 
     "clangd.semanticHighlighting": true,
 
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+
     "git.enableGutters": false
 }

@@ -24,18 +24,16 @@ Plug 'junegunn/limelight.vim'         " Darken everything but paragraph
 Plug 'Konfekt/FastFold'               " Faster folding
 
 
-" syntax highlighting
-" ~~~~~~~~~~~~~~~~~~~
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " semshi = python syntax
+" syntax/semantic highlighting
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'mboughaba/i3config.vim'
 Plug 'cespare/vim-toml'
 Plug 'chase/vim-ansible-yaml'
-Plug 'neilhwatson/vim_cf3'
-Plug 'arakashic/chromatica.nvim'
 Plug 'pearofducks/ansible-vim'
-Plug 'jackguo380/vim-lsp-cxx-highlight' " semantic syntax highlighting
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " semantic python hl
+Plug 'jackguo380/vim-lsp-cxx-highlight'                " lsp highlighting
 
 
 " productivity

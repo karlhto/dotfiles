@@ -18,6 +18,9 @@ augroup coc
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end
 
+" Chill with error symbols, that's coc's job
+let g:semshi#error_sign = v:false
+
 
 " mappings
 " ~~~~~~~~
@@ -84,4 +87,3 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-

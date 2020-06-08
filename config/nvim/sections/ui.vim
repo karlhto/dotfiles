@@ -19,7 +19,7 @@ set magic          " For regular expressions turn magic on
 set showmatch      " Show matching brackets
 set cursorline     " Show cursor line
 
-set textwidth=99   " Set preferred maximum textwidth to 100 columns
+set textwidth=79   " Set preferred maximum width to 79 columns
 set colorcolumn=+1 " Highlighted column
 
 set splitbelow     " Split below on horizontal split
