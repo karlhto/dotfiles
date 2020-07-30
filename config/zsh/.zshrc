@@ -10,10 +10,6 @@ fi
 
 # Add ~/.local/bin to path
 export PATH=$HOME/.local/bin:$PATH
-export PATH=/opt/texlive/2020/bin/x86_64-linux:$PATH
-
-export MANPATH=/opt/texlive/2020/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/opt/texlive/2020/texmf-dist/doc/info:$INFOPATH
 
 # Use fd for more speedy FZF
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .clangd --exclude .git'
@@ -40,6 +36,8 @@ setopt histignorespace
 alias tmux='tmux -2'
 alias v=nvim
 alias i3edit="v $HOME/.config/i3/config"
+
+
 
 
 # Style
