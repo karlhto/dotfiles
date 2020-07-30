@@ -82,7 +82,7 @@ font-4 = Noto Sans CJK KR:size=10:pixelsize=10;0
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = updates fs-root fs-home fs-storage memory cpu wlan eth net-speed openvpn battery temperature volume
+modules-right = updates fs-root fs-home fs-storage memory cpu wlan eth net-speed-eth openvpn battery temperature volume
 
 ; Set not-likely-to-change settings
 ;
@@ -98,12 +98,25 @@ eth-interface = enp5s0
 wifi-interface = wlp7s0
 
 
+[bar/laptop]
+inherit = bar/first
+
+monitor-fallback = eDP
+battery = BAT0
+adapter = AC
+
+eth-interface = enp2s0f0
+wifi-interface = wlp3s0
+
+modules-right = fs-root fs-home memory cpu wlan net-speed-wifi openvpn battery temperature volume
+
+
 [bar/desktop-left]
 inherit = bar/first
 monitor = DP-0
 ; Device specific settings
 eth-interface = enp5s0
-modules-right = updates fs-root fs-home fs-storage wlan eth net-speed openvpn battery volume
+modules-right = updates fs-root fs-home fs-storage wlan eth net-speed-eth openvpn battery volume
 
 
 [bar/desktop-right]
@@ -250,16 +263,16 @@ format-disconnected =
 format-packetloss = <animation-packetloss> <label-connected>
 animation-packetloss-0 = ⚠
 animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 📶
+animation-packetloss-1 = 󰖩
 animation-packetloss-1-foreground = #000000
 ; Framerate in milliseconds
 animation-packetloss-framerate = 500
 
-ramp-signal-0 = 冷
-ramp-signal-1 = 爛
-ramp-signal-2 = 嵐
-ramp-signal-3 = 襤
-ramp-signal-4 = 蠟
+ramp-signal-0 = 󰤯
+ramp-signal-1 = 󰤟
+ramp-signal-2 = 󰤢
+ramp-signal-3 = 󰤥
+ramp-signal-4 = 󰤨
 
 
 [module/eth]
@@ -282,14 +295,17 @@ format-disconnected =
 [module/net-speed-wifi]
 type = internal/network
 interface = ${root.wifi-interface}
+interval = 5.0
+
+label-connected = 󰛴%downspeed:10:10%  󰛶%upspeed:10:10%
+format-connected-underline = ${colors.blue}
+label-padding = 2
+
+downspeed-min = 20
+accumulate-stats = true
 
 
 [module/net-speed-eth]
-type = internal/network
-interface = ${root.eth-interface}
-
-
-[module/net-speed]
 type = internal/network
 interface = ${root.eth-interface}
 interval = 5.0
@@ -362,7 +378,7 @@ label-muted-foreground = ${colors.alert}
 type = internal/battery
 battery = ${root.battery}
 adapter = AC
-full-at = 95
+full-at = 80
 
 label-charging-foreground = ${colors.foreground-sec}
 format-charging = <animation-charging> <label-charging>
@@ -378,28 +394,28 @@ label-full-foreground = ${colors.foreground-sec}
 format-full-prefix = 
 format-full-underline = ${colors.good}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
+ramp-capacity-0 = 󰁺
+ramp-capacity-1 = 󰁻
+ramp-capacity-2 = 󰁼
+ramp-capacity-3 = 󰁽
+ramp-capacity-4 = 󰁾
+ramp-capacity-5 = 󰁿
+ramp-capacity-6 = 󰂀
+ramp-capacity-7 = 󰂀
+ramp-capacity-8 = 󰂂
+ramp-capacity-9 = 󰁹
 ramp-capacity-foreground = ${colors.foreground}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
-animation-charging-7 = 
-animation-charging-8 = 
-animation-charging-9 = 
+animation-charging-0 = 󰢜
+animation-charging-1 = 󰂆
+animation-charging-2 = 󰂇
+animation-charging-3 = 󰂈
+animation-charging-4 = 󰢝
+animation-charging-5 = 󰂉
+animation-charging-6 = 󰢞
+animation-charging-7 = 󰂊
+animation-charging-8 = 󰂋
+animation-charging-9 = 󰂅
 animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 500
 
