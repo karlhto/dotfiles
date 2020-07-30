@@ -17,6 +17,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .clangd --exclude .gi
 # Extract default GPG key ID, might be useful
 export KEYID=$(gpgconf --list-options gpg | awk -F: '$1 == "default-key" {print substr($10,2)}')
 
+# Make sure gpg knows which terminal is running it
+export GPG_TTY=$(tty)
+
 
 # Functions
 # =========
