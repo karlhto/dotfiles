@@ -130,8 +130,8 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 mode "$mode_system" {
     bindsym l exec --no-startup-id $locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend && $locker, mode "default"
-    bindsym h exec --no-startup-id systemctl hibernate && $locker, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
@@ -243,6 +243,7 @@ for_window [window_type="menu"] floating enable
 # background, compositor and polybar
 exec --no-startup-id feh --bg-fill --recursive --randomize /storage/Wallpapers
 exec --no-startup-id picom -b
+exec --no-startup-id xss-lock -- ~/.local/bin/lock.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # the programs that I use
