@@ -3,27 +3,29 @@
 
 " standard stuff
 " ~~~~~~~~~~~~~~
-set relativenumber " Relative line numbers from cursor line
-set number         " ...and the line number of the cursor line
+set relativenumber     " Relative line numbers from cursor line
+set number             " ...and the line number of the cursor line
 
-set signcolumn=yes " Do not move text if signs are used
+set signcolumn=yes     " Do not move text if signs are used
 
-set scrolloff=7    " Minimum 7 lines from cursor when scrolling
-set wrap           " Soft wrapping
+set scrolloff=7        " Minimum 7 lines from cursor when scrolling
+set wrap               " Soft wrapping
 
-set noshowmode     " airline shows mode for you
-set cmdheight=1    " Height of the command line
-set hidden         " Hide buffers when abandoned
+set noshowmode         " airline shows mode for you
+set cmdheight=1        " Height of the command line
+set hidden             " Hide buffers when abandoned
 
-set magic          " For regular expressions turn magic on
-set showmatch      " Show matching brackets
-set cursorline     " Show cursor line
+set magic              " For regular expressions turn magic on
+set showmatch          " Show matching brackets
+set cursorline         " Show cursor line
 
-set textwidth=99   " Set preferred maximum width to 99 columns
-set colorcolumn=+1 " Highlighted column
+set textwidth=99       " Set preferred maximum width to 99 columns
+set colorcolumn=+1     " Highlighted column
 
-set splitbelow     " Split below on horizontal split
-set splitright     " Split to the right on vertical split
+set splitbelow         " Split below on horizontal split
+set splitright         " Split to the right on vertical split
+
+set inccommand=nosplit " Interactive substitutions
 
 set viewoptions=cursor,folds,slash,unix
 set viewoptions-=options

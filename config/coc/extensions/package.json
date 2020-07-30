@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "coc-clangd": ">=0.4.11",
-    "coc-css": ">=1.2.3",
-    "coc-git": ">=1.7.15",
+    "coc-clangd": ">=0.4.12",
+    "coc-css": ">=1.2.4",
+    "coc-git": ">=1.8.1",
     "coc-json": ">=1.2.6",
-    "coc-markdownlint": ">=1.4.0",
+    "coc-markdownlint": ">=1.5.0",
     "coc-python": ">=1.2.12",
     "coc-texlab": ">=2.1.0",
     "coc-yaml": ">=1.0.4"
