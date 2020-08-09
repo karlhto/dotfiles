@@ -108,7 +108,7 @@ adapter = AC
 eth-interface = enp2s0f0
 wifi-interface = wlp3s0
 
-modules-right = fs-root fs-home memory cpu wlan net-speed-wifi openvpn battery temperature volume
+modules-right = fs-root fs-home memory cpu wlan openvpn battery temperature volume
 
 
 [bar/desktop-left]
@@ -378,7 +378,7 @@ label-muted-foreground = ${colors.alert}
 type = internal/battery
 battery = ${root.battery}
 adapter = AC
-full-at = 80
+full-at = 85
 
 label-charging-foreground = ${colors.foreground-sec}
 format-charging = <animation-charging> <label-charging>
