@@ -1,11 +1,14 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
+env:
+  WINIT_X11_SCALE_FACTOR: "1"
+
 window:
   decorations: none
 
 scrolling:
   history: 100000
 
-# Font configuration (changes require restart)
+# Font configuration
 font:
   normal:
     family: Hack
