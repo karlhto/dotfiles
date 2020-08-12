@@ -108,7 +108,7 @@ adapter = AC
 eth-interface = enp2s0f0
 wifi-interface = wlp3s0
 
-modules-right = fs-root fs-home memory cpu wlan openvpn battery temperature volume
+modules-right = fs-root fs-home memory cpu wlan openvpn xkeyboard battery temperature volume
 
 
 [bar/desktop-left]
@@ -448,6 +448,13 @@ ramp-4 = 
 ramp-font = 3
 ramp-foreground = ${colors.foreground}
 
+[module/xkeyboard]
+type = internal/xkeyboard
+
+label-layout =  %layout%
+format = <label-layout> <label-indicator>
+format-spacing = 0
+format-underline = ${colors.lime}
 
 [module/updates]
 type = custom/script
