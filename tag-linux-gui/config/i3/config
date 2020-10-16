@@ -261,6 +261,8 @@ workspace $ws5 output DP-2
 assign [class="^Chromium"] $ws2
 assign [class="^Slack"] $ws3
 assign [class="^youtube-music-desktop-app"] $ws5
+assign [class="^OMNeT++ IDE"] $ws9
+assign [class="^Qtenv"] $ws9
 
 for_window [class="^Toggl Desktop$"] floating enable, resize set 500 600, sticky enable
 for_window [window_role="pop-up"] floating enable
