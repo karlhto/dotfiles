@@ -28,12 +28,8 @@ Plug 'Konfekt/FastFold'               " Faster folding
 
 " syntax/semantic highlighting
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Plug 'sheerun/vim-polyglot'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'mboughaba/i3config.vim'
-Plug 'cespare/vim-toml'
-Plug 'chase/vim-ansible-yaml'
-Plug 'pearofducks/ansible-vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " semantic python hl
 Plug 'jackguo380/vim-lsp-cxx-highlight'                " lsp highlighting
 
@@ -57,9 +53,6 @@ Plug 'aserebryakov/vim-todo-lists' " Some todo list functionality
 Plug 'reedes/vim-pencil'           " Vim can also be used for writing!
 Plug 'zhimsel/vim-stay'            " Return where you belong
 Plug 'antoinemadec/coc-fzf'        " Fzf integration with fzf
-
-" what
-" ~~~~
-"Plug 'hugolgst/vimsence'
+Plug 'chase/vim-ansible-yaml'      " Ansible stuff
 
 call plug#end()
