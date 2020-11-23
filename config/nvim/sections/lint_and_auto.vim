@@ -21,6 +21,17 @@ augroup end
 " Chill with error symbols, that's coc's job
 let g:semshi#error_sign = v:false
 
+lua <<EOF
+local nvim_lsp = require'lspconfig'
+local configs = require'lspconfig/configs'
+
+nvim_lsp.clangd.setup{}
+
+nvim_lsp.kotlin_language_server.setup{
+  cmd = {'/home/karlhto/git/kotlin-language-server/server/build/install/server/bin/kotlin-language-server'};
+  on_attach = require'completion'.on_attach
+}
+EOF
 
 " mappings
 " ~~~~~~~~
