@@ -10,10 +10,9 @@ Plug 'roxma/nvim-yarp' " No UpdateRemotePlugins
 
 " auto-completion and linting
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Plug 'neoclide/coc.nvim', {'branch': 'release'}      " this plugin is jesus
-Plug 'neovim/nvim-lspconfig'                         " maybe this will be more jesus
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}            " quick af completion
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " a lot of snippets
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " this plugin is jesus
+Plug 'neovim/nvim-lspconfig'                    " maybe this will be more jesus
+Plug 'nvim-lua/completion-nvim'                 " and this
 
 
 " a e s t h e t i c s
