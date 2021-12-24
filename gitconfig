@@ -6,11 +6,13 @@
   signingkey = "0x044CD3C1ECF82E4E"
 [commit]
   gpgsign = true
-[pull]
-  rebase = true
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+[init]
+  defaultBranch = main
 # vim: set et sw=2 sts=2 ft=gitconfig:
