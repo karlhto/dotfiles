@@ -19,7 +19,7 @@ set magic              " For regular expressions turn magic on
 set showmatch          " Show matching brackets
 set cursorline         " Show cursor line
 
-set textwidth=99       " Set preferred maximum width to 99 columns
+set textwidth=119      " Set preferred maximum width to 99 columns
 set colorcolumn=+1     " Highlighted column
 
 set splitbelow         " Split below on horizontal split
@@ -29,12 +29,14 @@ set inccommand=nosplit " Interactive substitutions
 
 set viewoptions=cursor,folds,slash,unix
 set viewoptions-=options
-set foldmethod=marker
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " Standard settings for tabs (expandtab set explicitly per filetype that
 " needs it)
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
+set expandtab " I decided to explicitly set this here, use ftplugin for stuff that needs tabs
 
 " layout of FZF window
 if exists('$TMUX')

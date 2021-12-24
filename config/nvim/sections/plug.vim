@@ -1,6 +1,8 @@
 " Plugins
 " -------
 
+set nocompatible
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'roxma/nvim-yarp' " No UpdateRemotePlugins
@@ -8,9 +10,10 @@ Plug 'roxma/nvim-yarp' " No UpdateRemotePlugins
 
 " auto-completion and linting
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " this plugin is jesus
-Plug 'neovim/nvim-lspconfig'                    " maybe this will be more jesus
-Plug 'nvim-lua/completion-nvim'                 " and this
+Plug 'neoclide/coc.nvim', {'branch': 'release'}      " this plugin is jesus
+Plug 'neovim/nvim-lspconfig'                         " maybe this will be more jesus
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}            " quick af completion
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " a lot of snippets
 
 
 " a e s t h e t i c s
@@ -28,10 +31,10 @@ Plug 'Konfekt/FastFold'               " Faster folding
 
 " syntax/semantic highlighting
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Plug 'sheerun/vim-polyglot'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " semantic python hl
-Plug 'jackguo380/vim-lsp-cxx-highlight'                " lsp highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " The biggest and bestest hightlighter
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}      " Semantic python highlighting
+Plug 'jackguo380/vim-lsp-cxx-highlight'                     " Lsp highlighting for C/C++
+Plug 'sheerun/vim-polyglot'                                 " For all the stuff that nvim-treesitter doesn't do yet
 
 
 " productivity
