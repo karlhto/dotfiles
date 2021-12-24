@@ -2,9 +2,6 @@
 env:
   WINIT_X11_SCALE_FACTOR: "1"
 
-window:
-  decorations: none
-
 scrolling:
   history: 100000
 
