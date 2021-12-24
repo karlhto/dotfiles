@@ -47,7 +47,7 @@ stop_compositor() {
     fi
 }
 
-set_laptop(){
+set_laptop() {
     stop_compositor
     for VOUT in ${!VOUTS[*]}
     do
@@ -62,6 +62,7 @@ set_laptop(){
 }
 
 refresh_bar() {
+    stop_compositor
     killall -q $BAR
     if [ $HOSTNAME == 'krrl' ]; then
         $BAR desktop-left -r &
@@ -75,6 +76,7 @@ refresh_bar() {
             fi
         done
     fi
+    start_compositor
 }
 
 set_work() {
@@ -84,22 +86,22 @@ set_work() {
         --output HDMI-A-0 --off \
         --output DisplayPort-0 --off \
         --output DisplayPort-1 --mode 3440x1440 --pos 1920x0 --rotate normal
-            feh --bg-fill --no-fehbg --randomize /storage/Wallpapers/
-            start_compositor
-            refresh_bar
-        }
+    feh --bg-fill --no-fehbg --randomize /storage/Wallpapers/
+    start_compositor
+    refresh_bar
+}
 
-    set_auto_for_direction() {
-        stop_compositor
-        for VOUT in ${!VOUTS[*]}
-        do
-            if [ "${VOUT}" != "$LID" ]
-            then
-                $XRANDR --output ${VOUT} --auto $1 $LID
-            fi
-        done
-        start_compositor
-    }
+set_auto_for_direction() {
+    stop_compositor
+    for VOUT in ${!VOUTS[*]}
+    do
+        if [ "${VOUT}" != "$LID" ]
+        then
+            $XRANDR --output ${VOUT} --auto $1 $LID
+        fi
+    done
+    start_compositor
+}
 
 set_auto() {
     $XRANDR --auto
