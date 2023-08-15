@@ -64,7 +64,6 @@ highlight ColorColumn ctermbg=20 guibg=#303030
 
 " encoding
 " ~~~~~~~~
-set encoding=utf8
 set ffs=unix,dos,mac
 
 set spelllang=en
@@ -85,7 +84,6 @@ let g:airline_powerline_fonts = 1
 let g:tmuxline_powerline_separators = 1
 
 let g:airline_extensions = [
-      \'coc',
       \'branch',
       \'vimtex',
       \'tmuxline',

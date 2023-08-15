@@ -13,5 +13,8 @@ runtime sections/general.vim
 " user interface
 runtime sections/ui.vim
 
-" linting and autocompletion engines
-runtime sections/lint_and_auto.vim
+" language server configuration
+lua require('lsp')
+
+" treesitter
+lua require('treesitter')

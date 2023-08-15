@@ -122,6 +122,15 @@ noremap <leader>sa zg
 noremap <leader>s? z=
 
 
+" completion and linting
+" ~~~~~~~~~~~~~~~~~~~~~~
+" The rest of this stuff is handler by lsp.lua
+set completeopt=menu,menuone,noselect
+
+" Update language server polling more frequently (default is 4000ms)
+set updatetime=300
+
+
 " pandoc
 " ~~~~~~
 
@@ -157,3 +166,21 @@ augroup pencil
   autocmd FileType pandoc       call pencil#init()
   autocmd FileType tex          call pencil#init()
 augroup END
+
+
+" vimtex
+" ~~~~~~
+
+let g:loaded_vimtex = 1
+let g:vimtex_enabled = 1
+let g:vimtex_fold_enabled = 1
+let g:vimtex_complete_enabled = 0
+let g:vimtex_view_method = 'skim'
+
+if has('nvim')
+	let g:vimtex_compiler_progname = '/opt/homebrew/bin/nvr'
+endif
+
+let g:vimtex_compiler_latexmk_engines = {
+      \ '_'                : '-pdflua',
+      \}
