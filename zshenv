@@ -11,3 +11,5 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+export JAVA_HOME="$(/usr/libexec/java_home -v 17)"
+export AWS_VAULT_PROMPT=ykman

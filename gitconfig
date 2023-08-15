@@ -2,10 +2,10 @@
   editor = nvim
 [user]
   name = "Karl Hole Totland"
-  email = karl@totland.dev
+  email = kto@capraconsulting.no
   signingkey = "0x044CD3C1ECF82E4E"
 [commit]
-  gpgsign = true
+  gpgsign = false
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
