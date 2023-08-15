@@ -1,5 +1,11 @@
 # Initialisation
 # ==============
+
+if type brew &>/dev/null
+then
+  export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
@@ -28,6 +34,7 @@ mcd () {
     cd $1
 }
 
+
 # Options
 # =======
 unsetopt share_history
@@ -39,8 +46,6 @@ setopt histignorespace
 alias tmux='tmux -2'
 alias v=nvim
 alias i3edit="v $HOME/.config/i3/config"
-
-
 
 
 # Style

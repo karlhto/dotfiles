@@ -26,7 +26,7 @@ export PAGER='less'
 #
 
 if [[ -z "$LANG" ]]; then
-  export LANG='nb_NO.UTF-8'
+  export LANG='en_US.UTF-8'
 fi
 
 #
@@ -45,9 +45,14 @@ typeset -gU cdpath fpath mailpath path
 path=(
   ~/.local/bin
   ~/.cargo/bin
+  /Library/TeX/texbin
   /usr/local/{bin,sbin}
   $path
 )
+
+if [[ $(uname -m) == 'arm64' ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 #
 # Less
